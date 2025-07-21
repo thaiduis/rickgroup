@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rick Group - Game & Net</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+  <!-- Floating contact bar (left) -->
+  
+  <div class="side-icons side-icons-left">
+    <div class="side-icon"><i class="fa-brands fa-playstation"></i><span>PS5</span></div>
+    <div class="side-icon"><i class="fa-solid fa-desktop"></i><span>NET</span></div>
+    <div class="side-icon"><i class="fa-solid fa-gem"></i><span>Combo</span></div>
+  </div>
+  <div class="side-icons side-icons-right">
+    <div class="side-icon"><i class="fa-solid fa-futbol"></i><span>FIFA</span></div>
+    <div class="side-icon"><i class="fa-solid fa-gun"></i><span>Valorant</span></div>
+    <div class="side-icon"><i class="fa-solid fa-chess"></i><span>LoL</span></div>
+    <div class="side-icon"><i class="fa-solid fa-bomb"></i><span>CS:GO</span></div>
+  </div>
+ <!-- Thanh menu điều hướng -->
+  <nav class="navbar">
+    <div class="nav-logo">
+      <i class="fa-solid fa-gamepad"></i> Rick Group
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Mở menu"><i class="fa-solid fa-bars"></i></button>
+    <div class="nav-menu" id="navMenu">
+      <ul class="nav-links">
+        <li class="nav-item"><a href="#bang-gia">Bảng giá</a></li>
+        <li class="nav-item nav-dropdown">
+          <a href="#ctkm">CTKM</a>
+          <ul class="dropdown-menu">
+            <li><a href="#ctkm" title="Giảm giá cho khách mới"><i class="fa-solid fa-fire"></i> Giảm 20% cho khách mới <span class="dropdown-badge hot">Hot</span></a></li>
+            <li><a href="#ctkm" title="Tặng giờ cho nhóm"><i class="fa-solid fa-users"></i> Tặng 1 giờ cho nhóm 4 người <span class="dropdown-badge best">Best</span></a></li>
+            <li><a href="#ctkm" title="Khuyến mãi giờ vàng"><i class="fa-solid fa-clock"></i> Giờ vàng 8h-12h giảm 10% <span class="dropdown-badge new">New</span></a></li>
+          </ul>
+        </li>
+        <li class="nav-item nav-dropdown">
+          <a href="#list-game">Game</a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-label">NET</li>
+            <li><a href="#list-game" title="Bắn súng chiến thuật 5v5"><i class="fa-solid fa-gun"></i> Valorant <span class="dropdown-badge hot">Hot</span></a></li>
+            <li><a href="#list-game" title="MOBA quốc dân"><i class="fa-solid fa-chess"></i> LoL <span class="dropdown-badge best">Best</span></a></li>
+            <li><a href="#list-game" title="Bắn súng FPS kinh điển"><i class="fa-solid fa-bomb"></i> CS:GO</a></li>
+            <li class="dropdown-label">PS5</li>
+            <li><a href="#list-game" title="Bóng đá đỉnh cao, 2-4 người"><i class="fa-solid fa-futbol"></i> FIFA 23 <span class="dropdown-badge hot">Hot</span></a></li>
+            <li><a href="#list-game" title="Hành động nhập vai, 1 người"><i class="fa-solid fa-hammer"></i> God of War <span class="dropdown-badge best">Best</span></a></li>
+            <li><a href="#list-game" title="Siêu anh hùng, 1 người"><i class="fa-solid fa-spider"></i> Spider-Man <span class="dropdown-badge new">New</span></a></li>
+          </ul>
+        </li>
+        <li class="nav-item nav-dropdown">
+          <a href="#event-section">Sự kiện & Giải đấu</a>
+          <ul class="dropdown-menu event-dropdown">
+            <li>
+              <span class="event-badge hot">Hot</span>
+              <span class="event-title">FIFA 23 - Rick Cup</span>
+              <span class="event-date">20/07/2024</span>
+              <a href="#" class="event-btn open-event-register" data-event="FIFA 23 - Rick Cup">Đăng ký</a>
+            </li>
+            <li>
+              <span class="event-badge new">New</span>
+              <span class="event-title">Đêm Game Thâu Đêm</span>
+              <span class="event-date">27/07/2024</span>
+              <a href="#" class="event-btn open-event-register" data-event="Đêm Game Thâu Đêm">Đăng ký</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item"><a href="#lien-he">Liên hệ</a></li>
+
+      </ul>
+      <a href="tel:0123456789" class="nav-call"><i class="fa-solid fa-phone"></i> Gọi ngay</a>
+    </div>
+  </nav>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var navToggle = document.getElementById('navToggle');
+  var navMenu = document.getElementById('navMenu');
+  navToggle.onclick = function() {
+    navMenu.classList.toggle('open');
+    navToggle.classList.toggle('open');
+  };
+  // Đóng menu khi click link (mobile)
+  document.querySelectorAll('.nav-links a').forEach(function(link) {
+    link.onclick = function() {
+      navMenu.classList.remove('open');
+      navToggle.classList.remove('open');
+    };
+  });
+  // Dropdown mở bằng click trên mobile
+  document.querySelectorAll('.nav-dropdown > a').forEach(function(dropLink) {
+    dropLink.onclick = function(e) {
+      if (window.innerWidth <= 900) {
+        e.preventDefault();
+        var menu = this.nextElementSibling;
+        if (menu) menu.classList.toggle('open');
+      }
+    };
+  });
+});
+</script>
+
+  <!-- Popup -->
+  <div id="popup" class="popup">
+    <div class="popup-content animate-popup">
+      <span class="close" id="closePopup">&times;</span>
+      <h2><i class="fa-solid fa-star"></i> Chào mừng đến với Rick Group!</h2>
+      <p>Khuyến mãi đặc biệt: Giảm 20% cho khách mới tuần này!</p>
+    </div>
+  </div>
+
+  <!-- Popup đặt chỗ online -->
+<div id="bookingPopup" class="booking-popup">
+  <div class="booking-popup-content">
+    <span class="close" id="closeBookingPopup">&times;</span>
+    <h2>Đặt chỗ dịch vụ</h2>
+    <form id="bookingForm">
+      <label>Họ tên:<input type="text" name="name" required></label>
+      <label>Số điện thoại:<input type="tel" name="phone" required></label>
+      <label>Dịch vụ:
+        <select name="service" id="bookingService">
+          <option value="PS5">PS5</option>
+          <option value="NET (PC)">NET (PC)</option>
+          <option value="Combo PS5 + NET">Combo PS5 + NET</option>
+        </select>
+      </label>
+      <label>Combo:
+        <select name="combo" id="bookingCombo">
+          <option value="">Không chọn combo</option>
+          <option value="PS5 + Nước">PS5 + Nước (35.000 VNĐ/giờ)</option>
+          <option value="NET + Đồ ăn nhẹ">NET + Đồ ăn nhẹ (15.000 VNĐ/giờ)</option>
+          <option value="Combo Full">Combo Full (PS5 + NET + Nước + Đồ ăn: 45.000 VNĐ/giờ)</option>
+        </select>
+      </label>
+      <div id="comboInfo" class="combo-info"></div>
+      <label>Ngày:<input type="date" name="date" required></label>
+      <label>Giờ:<input type="time" name="time" required></label>
+      <label>Số người:<input type="number" name="people" min="1" max="20" value="1" required></label>
+      <label>Ghi chú:<textarea name="note" rows="2"></textarea></label>
+      <button type="submit" class="booking-btn">Gửi đặt chỗ</button>
+    </form>
+    <div id="bookingSuccess" class="booking-success" style="display:none;">Đặt chỗ thành công! Chúng tôi sẽ liên hệ xác nhận.</div>
+  </div>
+</div>
+
+  <!-- Popup chi tiết dịch vụ -->
+<div id="serviceDetailPopup" class="service-detail-popup">
+  <div class="service-detail-content">
+    <span class="close" id="closeServiceDetail">&times;</span>
+    <div id="serviceDetailBody">
+      <!-- Nội dung chi tiết dịch vụ sẽ được cập nhật bằng JS -->
+    </div>
+  </div>
+</div>
+
+  <!-- Popup đánh giá dịch vụ -->
+<div id="reviewPopup" class="review-popup">
+  <div class="review-popup-content">
+    <span class="close" id="closeReviewPopup">&times;</span>
+    <h2>Gửi đánh giá dịch vụ</h2>
+    <form id="reviewForm">
+      <label>Dịch vụ:
+        <select name="service" id="reviewService">
+          <option value="PS5">PS5</option>
+          <option value="NET (PC)">NET (PC)</option>
+          <option value="Combo PS5 + NET">Combo PS5 + NET</option>
+        </select>
+      </label>
+      <label>Chấm điểm:
+        <span class="review-stars">
+          <input type="radio" name="star" value="5" id="star5"><label for="star5">★</label>
+          <input type="radio" name="star" value="4" id="star4"><label for="star4">★</label>
+          <input type="radio" name="star" value="3" id="star3"><label for="star3">★</label>
+          <input type="radio" name="star" value="2" id="star2"><label for="star2">★</label>
+          <input type="radio" name="star" value="1" id="star1"><label for="star1">★</label>
+        </span>
+      </label>
+      <label>Nhận xét:<textarea name="comment" rows="2" required></textarea></label>
+      <button type="submit" class="review-btn">Gửi đánh giá</button>
+    </form>
+    <div id="reviewSuccess" class="review-success" style="display:none;">Cảm ơn bạn đã đánh giá!</div>
+  </div>
+</div>
+
+  <!-- Header -->
+  <header>
+    <h1>Rick Group</h1>
+    <p>Trải nghiệm Game PS5 & Net đỉnh cao</p>
+    <a href="#lien-he" class="cta-btn"><i class="fa-solid fa-bolt"></i> Đặt chỗ ngay</a>
+  </header>
+
+  <!-- Bảng giá -->
+  <section class="section" id="bang-gia">
+    <h2><i class="fa-solid fa-money-bill-wave"></i> Bảng giá</h2>
+    <div class="service-cards">
+      <div class="service-card fade-in">
+        <div class="service-header">
+          <span class="service-badge">Hot</span>
+          <i class="fa-brands fa-playstation"></i>
+          <span class="service-title">PS5</span>
+        </div>
+        <div class="service-price">30.000 VNĐ/giờ</div>
+        <ul class="service-specs">
+          <li><i class="fa-solid fa-tv"></i> Màn hình 4K 55”</li>
+          <li><i class="fa-solid fa-gamepad"></i> 2 tay cầm DualSense</li>
+          <li><i class="fa-solid fa-volume-high"></i> Âm thanh vòm</li>
+          <li><i class="fa-solid fa-snowflake"></i> Phòng lạnh</li>
+        </ul>
+        <div class="service-desc">Chơi game console thế hệ mới, nước uống miễn phí, wifi mạnh.</div>
+        <div class="service-rating">
+          <i class="fa-solid fa-star"></i> 4.9 (120+ đánh giá)
+        </div>
+        <div class="review-list" data-service="PS5">
+          <div class="review-item"><span class="review-stars">★★★★★</span> “Máy mới, phòng đẹp, trải nghiệm cực đã!”</div>
+        </div>
+        <div class="service-content">
+          <div class="service-actions">
+            <a href="#" class="review-btn open-review" data-service="PS5">Gửi đánh giá</a>
+            <a href="#" class="service-btn open-booking" data-service="PS5">Đặt chỗ</a>
+            <a href="#" class="service-btn open-detail" data-service="PS5">Xem chi tiết</a>
+          </div>
+        </div>
+      </div>
+      <div class="service-card fade-in" style="animation-delay:0.1s">
+        <div class="service-header">
+          <span class="service-badge best">Best Seller</span>
+          <i class="fa-solid fa-desktop"></i>
+          <span class="service-title">NET (PC)</span>
+        </div>
+        <div class="service-price">10.000 VNĐ/giờ</div>
+        <ul class="service-specs">
+          <li><i class="fa-solid fa-microchip"></i> CPU i7, RAM 32GB</li>
+          <li><i class="fa-solid fa-display"></i> Màn hình 240Hz 27”</li>
+          <li><i class="fa-solid fa-chair"></i> Ghế gaming</li>
+          <li><i class="fa-solid fa-headphones"></i> Tai nghe xịn</li>
+        </ul>
+        <div class="service-desc">Dàn máy cấu hình cao, phòng lạnh, nước uống miễn phí, wifi cực mạnh.</div>
+        <div class="service-rating">
+          <i class="fa-solid fa-star"></i> 4.8 (200+ đánh giá)
+        </div>
+        <div class="review-list" data-service="NET (PC)">
+          <div class="review-item"><span class="review-stars">★★★★★</span> “PC mạnh, màn hình nét, chơi game cực mượt!”</div>
+        </div>
+        <div class="service-content">
+          <div class="service-actions">
+            <a href="#" class="review-btn open-review" data-service="NET (PC)">Gửi đánh giá</a>
+            <a href="#" class="service-btn open-booking" data-service="NET (PC)">Đặt chỗ</a>
+            <a href="#" class="service-btn open-detail" data-service="NET (PC)">Xem chi tiết</a>
+          </div>
+        </div>
+      </div>
+      <div class="service-card fade-in" style="animation-delay:0.2s">
+        <div class="service-header">
+          <span class="service-badge">Combo</span>
+          <i class="fa-solid fa-gem"></i>
+          <span class="service-title">Combo PS5 + NET</span>
+        </div>
+        <div class="service-price">35.000 VNĐ/giờ</div>
+        <ul class="service-specs">
+          <li><i class="fa-solid fa-arrows-rotate"></i> Chuyển đổi linh hoạt</li>
+          <li><i class="fa-solid fa-percent"></i> Ưu đãi giá combo</li>
+          <li><i class="fa-solid fa-gift"></i> Tặng thêm giờ chơi</li>
+          <li><i class="fa-solid fa-snowflake"></i> Phòng lạnh</li>
+        </ul>
+        <div class="service-desc">Trải nghiệm cả PS5 và PC, tiết kiệm chi phí, nhiều ưu đãi hấp dẫn.</div>
+        <div class="service-rating">
+          <i class="fa-solid fa-star"></i> 5.0 (80+ đánh giá)
+        </div>
+        <div class="review-list" data-service="Combo PS5 + NET">
+          <div class="review-item"><span class="review-stars">★★★★★</span> “Combo tiện lợi, giá tốt, chơi cả ngày không chán!”</div>
+        </div>
+        <div class="service-content">
+          <div class="service-actions">
+            <a href="#" class="review-btn open-review" data-service="Combo PS5 + NET">Gửi đánh giá</a>
+            <a href="#" class="service-btn open-booking" data-service="Combo PS5 + NET">Đặt chỗ</a>
+            <a href="#" class="service-btn open-detail" data-service="Combo PS5 + NET">Xem chi tiết</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTKM -->
+  <section class="section" id="ctkm">
+    <h2><i class="fa-solid fa-gift"></i> Chương trình khuyến mãi</h2>
+    <div class="promo-cards">
+      <div class="promo-card fade-in">
+        <div class="promo-badge hot">Hot</div>
+        <i class="fa-solid fa-fire"></i>
+        <div class="promo-title">Giảm 20% cho khách mới</div>
+        <div class="promo-desc">Áp dụng cho lần đầu đến quán. Không giới hạn số giờ.</div>
+        <div class="promo-time">Hiệu lực: 01/06 - 30/06 <span class="promo-countdown" data-end="2024-06-30T23:59:59"></span></div>
+        <a href="#lien-he" class="promo-btn">Nhận ưu đãi</a>
+      </div>
+      <div class="promo-card fade-in" style="animation-delay:0.1s">
+        <div class="promo-badge best">Best</div>
+        <i class="fa-solid fa-users"></i>
+        <div class="promo-title">Tặng 1 giờ cho nhóm 4 người</div>
+        <div class="promo-desc">Áp dụng cho nhóm từ 4 người trở lên. Tặng thêm 1 giờ chơi miễn phí.</div>
+        <div class="promo-time">Hiệu lực: 01/07 - 15/07 <span class="promo-countdown" data-end="2024-07-15T23:59:59"></span></div>
+        <a href="#lien-he" class="promo-btn">Nhận ưu đãi</a>
+      </div>
+      <div class="promo-card fade-in" style="animation-delay:0.2s">
+        <div class="promo-badge new">New</div>
+        <i class="fa-solid fa-clock"></i>
+        <div class="promo-title">Giờ vàng 8h-12h giảm 10%</div>
+        <div class="promo-desc">Khuyến mãi áp dụng từ 8h đến 12h mỗi ngày. Không giới hạn số lần.</div>
+        <div class="promo-time">Hiệu lực: 01/06 - 31/07 <span class="promo-countdown" data-end="2024-07-31T23:59:59"></span></div>
+        <a href="#lien-he" class="promo-btn">Nhận ưu đãi</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- List game -->
+  <section class="section" id="list-game">
+    <h2><i class="fa-solid fa-gamepad"></i> Danh sách game tại quán</h2>
+    <div class="game-group">
+      <div class="game-group-title ps5"><i class="fa-brands fa-playstation"></i> Game PS5</div>
+      <div class="game-list">
+        <div class="game-item">
+          <i class="fa-solid fa-futbol"></i>
+          <span class="game-name">FIFA 23</span>
+          <span class="game-badge hot">Hot</span>
+          <span class="game-type">Thể thao</span>
+          <span class="game-players"><i class="fa-solid fa-user-group"></i> 2-4 người</span>
+          <span class="game-desc">Bóng đá đỉnh cao, đồ họa chân thực.</span>
+        </div>
+        <div class="game-item">
+          <i class="fa-solid fa-hammer"></i>
+          <span class="game-name">God of War</span>
+          <span class="game-badge best">Best</span>
+          <span class="game-type">Hành động</span>
+          <span class="game-players"><i class="fa-solid fa-user"></i> 1 người</span>
+          <span class="game-desc">Hành động nhập vai, cốt truyện hấp dẫn.</span>
+        </div>
+        <div class="game-item">
+          <i class="fa-solid fa-spider"></i>
+          <span class="game-name">Spider-Man</span>
+          <span class="game-badge new">New</span>
+          <span class="game-type">Phiêu lưu</span>
+          <span class="game-players"><i class="fa-solid fa-user"></i> 1 người</span>
+          <span class="game-desc">Siêu anh hùng, phiêu lưu thành phố New York.</span>
+        </div>
+      </div>
+      <div class="game-group-title net"><i class="fa-solid fa-desktop"></i> Game NET (PC)</div>
+      <div class="game-list">
+        <div class="game-item">
+          <i class="fa-solid fa-gun"></i>
+          <span class="game-name">Valorant</span>
+          <span class="game-badge hot">Hot</span>
+          <span class="game-type">Bắn súng</span>
+          <span class="game-players"><i class="fa-solid fa-user-group"></i> 5v5</span>
+          <span class="game-desc">Bắn súng chiến thuật 5v5 cực hot!</span>
+        </div>
+        <div class="game-item">
+          <i class="fa-solid fa-chess"></i>
+          <span class="game-name">LoL</span>
+          <span class="game-badge best">Best</span>
+          <span class="game-type">MOBA</span>
+          <span class="game-players"><i class="fa-solid fa-user-group"></i> 5v5</span>
+          <span class="game-desc">MOBA quốc dân, đấu trường công lý!</span>
+        </div>
+        <div class="game-item">
+          <i class="fa-solid fa-bomb"></i>
+          <span class="game-name">CS:GO</span>
+          <span class="game-type">Bắn súng</span>
+          <span class="game-players"><i class="fa-solid fa-user-group"></i> 5v5</span>
+          <span class="game-desc">Bắn súng FPS kinh điển, giải trí cực mạnh.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Top Game Hot Chơi Nhiều -->
+  <section class="section top-game-section">
+    <h2><i class="fa-solid fa-fire"></i> Top Game Hot Chơi Nhiều</h2>
+    <div class="top-game-list top-game-list-vertical">
+      <!-- Vùng NET -->
+      <div class="top-game-group-label net"><i class="fa-solid fa-desktop"></i> Game NET</div>
+      <div class="top-game-item">
+        <div class="top-game-rank">#1</div>
+        <i class="fa-solid fa-gun"></i>
+        <span class="top-game-name">Valorant</span>
+        <span class="top-game-badge net">NET</span>
+        <span class="top-game-hot">Hot</span>
+        <span class="top-game-plays">1.200 lượt</span>
+        <span class="top-game-desc">Bắn súng chiến thuật 5v5 cực hot!</span>
+      </div>
+      <div class="top-game-item">
+        <div class="top-game-rank">#2</div>
+        <i class="fa-solid fa-chess"></i>
+        <span class="top-game-name">LoL</span>
+        <span class="top-game-badge net">NET</span>
+        <span class="top-game-best">Best</span>
+        <span class="top-game-plays">1.050 lượt</span>
+        <span class="top-game-desc">MOBA quốc dân, đấu trường công lý!</span>
+      </div>
+      <div class="top-game-item">
+        <div class="top-game-rank">#3</div>
+        <i class="fa-solid fa-bomb"></i>
+        <span class="top-game-name">CS:GO</span>
+        <span class="top-game-badge net">NET</span>
+        <span class="top-game-plays">900 lượt</span>
+        <span class="top-game-desc">Bắn súng FPS kinh điển, giải trí cực mạnh.</span>
+      </div>
+      <!-- Vùng PS5 -->
+      <div class="top-game-group-label ps5"><i class="fa-brands fa-playstation"></i> Game PS5</div>
+      <div class="top-game-item">
+        <div class="top-game-rank">#4</div>
+        <i class="fa-solid fa-futbol"></i>
+        <span class="top-game-name">FIFA 23</span>
+        <span class="top-game-badge ps5">PS5</span>
+        <span class="top-game-players"><i class="fa-solid fa-user-group"></i> 2-4 người</span>
+        <span class="top-game-hot">Hot</span>
+        <span class="top-game-plays">850 lượt</span>
+        <span class="top-game-desc">Bóng đá đỉnh cao, đồ họa chân thực.</span>
+      </div>
+      <div class="top-game-item">
+        <div class="top-game-rank">#5</div>
+        <i class="fa-solid fa-hammer"></i>
+        <span class="top-game-name">God of War</span>
+        <span class="top-game-badge ps5">PS5</span>
+        <span class="top-game-players"><i class="fa-solid fa-user"></i> 1 người</span>
+        <span class="top-game-best">Best</span>
+        <span class="top-game-plays">700 lượt</span>
+        <span class="top-game-desc">Hành động nhập vai, cốt truyện hấp dẫn.</span>
+      </div>
+      <div class="top-game-item">
+        <div class="top-game-rank">#6</div>
+        <i class="fa-solid fa-spider"></i>
+        <span class="top-game-name">Spider-Man</span>
+        <span class="top-game-badge ps5">PS5</span>
+        <span class="top-game-players"><i class="fa-solid fa-user"></i> 1 người</span>
+        <span class="top-game-plays">650 lượt</span>
+        <span class="top-game-desc">Siêu anh hùng, phiêu lưu thành phố New York.</span>
+      </div>
+    </div>
+  </section>
+  <section class="section event-section">
+    <h2><i class="fa-solid fa-trophy"></i> Sự kiện & Giải đấu sắp tới</h2>
+    <div class="event-list">
+      <div class="event-card">
+        <div class="event-badge hot">Hot</div>
+        <div class="event-title">Giải đấu FIFA 23 - Rick Cup</div>
+        <div class="event-date">Ngày: 20/07/2024 <span class="event-countdown" data-end="2024-07-20T09:00:00"></span></div>
+        <div class="event-desc">Tham gia tranh tài FIFA 23, giải thưởng lên tới 5 triệu đồng, nhận quà tặng hấp dẫn cho mọi người chơi!</div>
+        <a href="#" class="event-btn open-event-register" data-event="FIFA 23 - Rick Cup">Đăng ký tham gia</a>
+      </div>
+      <div class="event-card">
+        <div class="event-badge new">New</div>
+        <div class="event-title">Sự kiện Đêm Game Thâu Đêm</div>
+        <div class="event-date">Ngày: 27/07/2024 <span class="event-countdown" data-end="2024-07-27T20:00:00"></span></div>
+        <div class="event-desc">Chơi game xuyên đêm, nhận ưu đãi 50%, tặng nước uống và đồ ăn nhẹ miễn phí cho tất cả thành viên tham gia.</div>
+        <a href="#" class="event-btn open-event-register" data-event="Đêm Game Thâu Đêm">Đăng ký tham gia</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Liên hệ nhanh -->
+  <section class="section contact-section" id="lien-he">
+    <h2><i class="fa-solid fa-phone-volume"></i> Liên hệ & Địa chỉ</h2>
+    <div class="contact-info">
+      <div>
+        <p><i class="fa-solid fa-location-dot"></i> 957-959 Đ. Quang Trung, Phường 14, Gò Vấp, Hồ Chí Minh 727010, Việt Nam</p>
+        <p><i class="fa-solid fa-phone"></i> <a href="tel:0123456789">0123 456 789</a></p>
+        <p><i class="fa-brands fa-facebook-messenger"></i> <a href="#">Nhắn Messenger</a></p>
+        <p>
+          <img src="images/zalo.png" alt="Zalo" class="zalo-icon">
+          <a href="#">Nhắn Zalo</a>
+        </p>
+      </div>
+      <iframe class="map-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3586.9043289288625!2d106.63540151012799!3d10.845504957872166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175290b08279bf1%3A0x1d0720d5ced81c45!2sRick%20Group%20-%20Club%20Billiards%2C%20NET%2C%20Cafe%2C%20PS5%2024%2F7!5e1!3m2!1svi!2s!4v1753080286083!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+
+  <!-- Nút cuộn lên đầu trang -->
+  <button id="scrollTopBtn" title="Lên đầu trang"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Rick Group. All rights reserved.</p>
+  </footer>
+
+  <!-- Sự kiện & Giải đấu sắp tới -->
+
+
+  <!-- Nút chat hỗ trợ nổi góc phải -->
+<div class="chat-support">
+  
+  <a href="#" class="chat-btn chat-zalo" title="Chat Zalo" target="_blank" rel="noopener">
+    <img src="images/zalo.png" alt="Zalo" class="zalo-icon-chat">
+  </a>
+</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
